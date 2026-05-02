@@ -1,154 +1,408 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fabián Bauttt — Innovación Educativa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --accent-phi: #d4c99a; /* Dorado Descartes */
-            --accent-hist: #c0392b; /* Rojo Guerra Fría */
-            --transition: all 0.3s ease;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prof. Fabián Bautista G. — Escape Rooms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <style>
+    /* ── Variables ─────────────────────────────────────────── */
+    :root {
+      --bg:           #0a0c12;
+      --bg-card:      #111827;
+      --bg-card-alt:  #0f172a;
+      --border:       rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-        }
+      --text-primary:   #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted:     #475569;
 
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+      /* Filosofía — azul frío */
+      --accent-filo:      #d4c99a;
+      --glow-filo:        rgba(212,201,154,0.18);
+      --glow-filo-ring:   rgba(212,201,154,0.35);
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
+      /* Sociales — ámbar */
+      --accent-soc:       #c0392b;
+      --glow-soc:         rgba(192,57,43,0.14);
+      --glow-soc-ring:    rgba(192,57,43,0.32);
 
-        p.subtitle {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
+      --radius:    14px;
+      --transition: 0.38s cubic-bezier(0.22,1,0.36,1);
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 900px;
-        }
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid #334155;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--text);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
+    html { scroll-behavior: smooth; }
 
-        .card h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
+    body {
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 55% at 50% 40%,
+          rgba(30,58,138,0.22) 0%,
+          transparent 70%),
+        radial-gradient(ellipse 40% 30% at 50% 20%,
+          rgba(15,23,42,0.8) 0%,
+          transparent 100%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.25rem;
 
-        .card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #cbd5e1;
-            margin-bottom: 2rem;
-        }
+      /* Subtle grain overlay */
+      position: relative;
+    }
 
-        /* Colores específicos por asignatura */
-        .phi-card:hover { box-shadow: 0 0 30px rgba(212, 201, 154, 0.15); }
-        .phi-card h2 { color: var(--accent-phi); }
-        
-        .hist-card:hover { box-shadow: 0 0 30px rgba(192, 57, 43, 0.15); }
-        .hist-card h2 { color: var(--accent-hist); }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: var(--transition);
-        }
+    /* ── Layout ─────────────────────────────────────────────── */
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 860px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(4rem, 10vh, 7rem) 0 3rem;
+      gap: clamp(3rem, 7vh, 5rem);
+    }
 
-        .btn-phi { background: var(--accent-phi); color: #1e1b10; }
-        .btn-hist { background: var(--accent-hist); color: white; }
+    /* ── Header ─────────────────────────────────────────────── */
+    .header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      animation: fadeUp 0.9s var(--transition) both;
+    }
 
-        footer {
-            margin-top: 5rem;
-            font-size: 0.8rem;
-            color: #64748b;
-            text-align: center;
-        }
+    .header-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-        }
-    </style>
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.08;
+      color: var(--text-primary);
+    }
+
+    .header h1 strong {
+      font-weight: 600;
+    }
+
+    .header-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+      margin: 0.25rem auto;
+    }
+
+    .header p {
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      font-style: italic;
+    }
+
+    /* ── Cards Grid ─────────────────────────────────────────── */
+    .cards {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: 1.25rem;
+    }
+
+    /* ── Card ───────────────────────────────────────────────── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(2rem, 5vw, 2.8rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+      animation: fadeUp 0.9s var(--transition) both;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.12s; }
+    .card:nth-child(2) { animation-delay: 0.22s; }
+
+    /* Shimmer sweep on hover */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        130deg,
+        transparent 30%,
+        rgba(255,255,255,0.032) 50%,
+        transparent 70%
+      );
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Per-card color theming */
+    .card--filo:hover {
+      border-color: var(--glow-filo-ring);
+      box-shadow:
+        0 0 0 1px var(--glow-filo-ring),
+        0 20px 60px -12px rgba(0,0,0,0.6),
+        0 0 40px -8px var(--glow-filo);
+      transform: translateY(-5px);
+    }
+
+    .card--soc:hover {
+      border-color: var(--glow-soc-ring);
+      box-shadow:
+        0 0 0 1px var(--glow-soc-ring),
+        0 20px 60px -12px rgba(0,0,0,0.6),
+        0 0 40px -8px var(--glow-soc);
+      transform: translateY(-5px);
+    }
+
+    /* ── Card icon ──────────────────────────────────────────── */
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .card--filo .card-icon {
+      background: rgba(96,165,250,0.1);
+      border: 1px solid rgba(96,165,250,0.2);
+    }
+
+    .card--soc .card-icon {
+      background: rgba(251,191,36,0.1);
+      border: 1px solid rgba(251,191,36,0.2);
+    }
+
+    /* ── Card body ──────────────────────────────────────────── */
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25em 0.7em;
+      border-radius: 999px;
+    }
+
+    .card--filo .card-tag {
+      color: var(--accent-filo);
+      background: rgba(96,165,250,0.1);
+    }
+
+    .card--soc .card-tag {
+      color: var(--accent-soc);
+      background: rgba(251,191,36,0.1);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 3.2vw, 1.65rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .card-desc {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .card-cta {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: gap var(--transition);
+    }
+
+    .card--filo .card-cta { color: var(--accent-filo); }
+    .card--soc  .card-cta { color: var(--accent-soc);  }
+
+    .card:hover .card-cta { gap: 0.9rem; }
+
+    .card-cta svg {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--transition);
+    }
+
+    .card:hover .card-cta svg {
+      transform: translateX(3px);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+      padding: 1.75rem 0 2.5rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Animations ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 540px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>FABIÁN BAUTTT</h1>
-        <p class="subtitle">Laboratorio de Experiencias Educativas</p>
+  <main>
+
+    <!-- ── Header ── -->
+    <header class="header">
+      <span class="header-eyebrow">Portal de Experiencias</span>
+      <h1><strong>Prof. Fabián</strong> Bautista G.</h1>
+      <div class="header-divider"></div>
+      <p>Experimenta tu aprendizaje</p>
     </header>
 
-    <main class="grid">
-        <a href="https://fabianbauttt.github.io/escape-descartes/" class="card phi-card">
-            <div>
-                <h2>FILOSOFÍA</h2>
-                <p>Explora la Duda Metódica de René Descartes. ¿Eres capaz de escapar del engaño del Genio Maligno?</p>
-            </div>
-            <span class="btn btn-phi">Iniciar Desafío</span>
-        </a>
+    <!-- ── Cards ── -->
+    <section class="cards" aria-label="Escape Rooms disponibles">
 
-        <a href="https://fabianbauttt.github.io/escape-guerra-fria/" class="card hist-card">
-            <div>
-                <h2>SOCIALES</h2>
-                <p>Operación: Teléfono Rojo. Detén el lanzamiento nuclear investigando los hitos de la Guerra Fría.</p>
-            </div>
-            <span class="btn btn-hist">Aceptar Misión</span>
-        </a>
-    </main>
+      <!-- Tarjeta 1: Filosofía -->
+      <a
+        class="card card--filo"
+        href="https://fabianbauttt.github.io/escape-descartes/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ir al Escape Room de Filosofía"
+      >
+        <div class="card-meta">
+          <div class="card-icon" aria-hidden="true">🧠</div>
+          <span class="card-tag">Filosofía</span>
+        </div>
 
-    <footer>
-        <p>&copy; 2026 — Diseñado para el aprendizaje activo</p>
-    </footer>
+        <div>
+          <h2 class="card-title">El Laberinto del<br>Genio Maligno</h2>
+        </div>
+
+        <p class="card-desc">
+          Un desafío sobre la duda metódica de Descartes.<br>
+          ¿Puedes confiar en tus propios sentidos?
+        </p>
+
+        <div class="card-cta">
+          Entrar al desafío
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Tarjeta 2: Sociales -->
+      <a
+        class="card card--soc"
+        href="https://fabianbauttt.github.io/escape-guerra-fria/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ir al Escape Room de Ciencias Sociales"
+      >
+        <div class="card-meta">
+          <div class="card-icon" aria-hidden="true">📡</div>
+          <span class="card-tag">C. Sociales</span>
+        </div>
+
+        <div>
+          <h2 class="card-title">Operación<br>Teléfono Rojo</h2>
+        </div>
+
+        <p class="card-desc">
+          Investigación táctica sobre la Guerra Fría.<br>
+          El mundo al borde del precipicio te necesita.
+        </p>
+
+        <div class="card-cta">
+          Entrar al desafío
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </a>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2026</span>
+  </footer>
 
 </body>
 </html>
