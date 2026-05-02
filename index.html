@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabián Bauttt — Innovación Educativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --accent-phi: #d4c99a; /* Dorado Descartes */
+            --accent-hist: #c0392b; /* Rojo Guerra Fría */
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #334155;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--text);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        /* Colores específicos por asignatura */
+        .phi-card:hover { box-shadow: 0 0 30px rgba(212, 201, 154, 0.15); }
+        .phi-card h2 { color: var(--accent-phi); }
+        
+        .hist-card:hover { box-shadow: 0 0 30px rgba(192, 57, 43, 0.15); }
+        .hist-card h2 { color: var(--accent-hist); }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .btn-phi { background: var(--accent-phi); color: #1e1b10; }
+        .btn-hist { background: var(--accent-hist); color: white; }
+
+        footer {
+            margin-top: 5rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FABIÁN BAUTTT</h1>
+        <p class="subtitle">Laboratorio de Experiencias Educativas</p>
+    </header>
+
+    <main class="grid">
+        <a href="https://fabianbauttt.github.io/escape-descartes/" class="card phi-card">
+            <div>
+                <h2>FILOSOFÍA</h2>
+                <p>Explora la Duda Metódica de René Descartes. ¿Eres capaz de escapar del engaño del Genio Maligno?</p>
+            </div>
+            <span class="btn btn-phi">Iniciar Desafío</span>
+        </a>
+
+        <a href="https://fabianbauttt.github.io/escape-guerra-fria/" class="card hist-card">
+            <div>
+                <h2>SOCIALES</h2>
+                <p>Operación: Teléfono Rojo. Detén el lanzamiento nuclear investigando los hitos de la Guerra Fría.</p>
+            </div>
+            <span class="btn btn-hist">Aceptar Misión</span>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 — Diseñado para el aprendizaje activo</p>
+    </footer>
+
+</body>
+</html>
