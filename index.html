@@ -21,15 +21,20 @@
       --text-secondary: #94a3b8;
       --text-muted:     #475569;
 
-      /* Filosofía — azul frío */
+      /* Filosofía — Dorado Descartes */
       --accent-filo:      #d4c99a;
       --glow-filo:        rgba(212,201,154,0.18);
       --glow-filo-ring:   rgba(212,201,154,0.35);
 
-      /* Sociales — ámbar */
+      /* Sociales — Rojo Guerra Fría */
       --accent-soc:       #c0392b;
       --glow-soc:         rgba(192,57,43,0.14);
       --glow-soc-ring:    rgba(192,57,43,0.32);
+
+      /* Arkhé — Bronce Grecia (NUEVO) */
+      --accent-arkhe:     #a67c52;
+      --glow-arkhe:       rgba(166,124,82,0.18);
+      --glow-arkhe-ring:  rgba(166,124,82,0.35);
 
       --radius:    14px;
       --transition: 0.38s cubic-bezier(0.22,1,0.36,1);
@@ -40,18 +45,13 @@
 
     /* ── Reset ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg);
       background-image:
-        radial-gradient(ellipse 70% 55% at 50% 40%,
-          rgba(30,58,138,0.22) 0%,
-          transparent 70%),
-        radial-gradient(ellipse 40% 30% at 50% 20%,
-          rgba(15,23,42,0.8) 0%,
-          transparent 100%);
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(30,58,138,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 50% 20%, rgba(15,23,42,0.8) 0%, transparent 100%);
       color: var(--text-primary);
       font-family: var(--font-body);
       font-weight: 300;
@@ -60,8 +60,6 @@
       flex-direction: column;
       align-items: center;
       padding: 0 1.25rem;
-
-      /* Subtle grain overlay */
       position: relative;
     }
 
@@ -75,7 +73,6 @@
       z-index: 0;
     }
 
-    /* ── Layout ─────────────────────────────────────────────── */
     main {
       position: relative;
       z-index: 1;
@@ -89,7 +86,6 @@
       gap: clamp(3rem, 7vh, 5rem);
     }
 
-    /* ── Header ─────────────────────────────────────────────── */
     .header {
       text-align: center;
       display: flex;
@@ -117,30 +113,15 @@
       color: var(--text-primary);
     }
 
-    .header h1 strong {
-      font-weight: 600;
-    }
-
-    .header-divider {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
-      margin: 0.25rem auto;
-    }
-
-    .header p {
-      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-      color: var(--text-secondary);
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      font-style: italic;
-    }
+    .header h1 strong { font-weight: 600; }
+    .header-divider { width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--text-muted), transparent); margin: 0.25rem auto; }
+    .header p { font-size: clamp(0.95rem, 2.2vw, 1.1rem); color: var(--text-secondary); font-weight: 300; letter-spacing: 0.01em; font-style: italic; }
 
     /* ── Cards Grid ─────────────────────────────────────────── */
     .cards {
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
       gap: 1.25rem;
     }
 
@@ -149,7 +130,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: clamp(2rem, 5vw, 2.8rem);
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
@@ -157,175 +138,62 @@
       color: inherit;
       position: relative;
       overflow: hidden;
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        box-shadow var(--transition);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
       animation: fadeUp 0.9s var(--transition) both;
     }
 
     .card:nth-child(1) { animation-delay: 0.12s; }
     .card:nth-child(2) { animation-delay: 0.22s; }
+    .card:nth-child(3) { animation-delay: 0.32s; }
 
-    /* Shimmer sweep on hover */
     .card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        130deg,
-        transparent 30%,
-        rgba(255,255,255,0.032) 50%,
-        transparent 70%
-      );
+      background: linear-gradient(130deg, transparent 30%, rgba(255,255,255,0.032) 50%, transparent 70%);
       transform: translateX(-100%);
       transition: transform 0.6s ease;
       pointer-events: none;
     }
 
-    .card:hover::before {
-      transform: translateX(100%);
-    }
+    .card:hover::before { transform: translateX(100%); }
 
-    /* Per-card color theming */
-    .card--filo:hover {
-      border-color: var(--glow-filo-ring);
-      box-shadow:
-        0 0 0 1px var(--glow-filo-ring),
-        0 20px 60px -12px rgba(0,0,0,0.6),
-        0 0 40px -8px var(--glow-filo);
-      transform: translateY(-5px);
-    }
-
-    .card--soc:hover {
-      border-color: var(--glow-soc-ring);
-      box-shadow:
-        0 0 0 1px var(--glow-soc-ring),
-        0 20px 60px -12px rgba(0,0,0,0.6),
-        0 0 40px -8px var(--glow-soc);
-      transform: translateY(-5px);
-    }
+    /* Hover States */
+    .card--filo:hover { border-color: var(--glow-filo-ring); box-shadow: 0 0 0 1px var(--glow-filo-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-filo); transform: translateY(-5px); }
+    .card--soc:hover { border-color: var(--glow-soc-ring); box-shadow: 0 0 0 1px var(--glow-soc-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-soc); transform: translateY(-5px); }
+    .card--arkhe:hover { border-color: var(--glow-arkhe-ring); box-shadow: 0 0 0 1px var(--glow-arkhe-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-arkhe); transform: translateY(-5px); }
 
     /* ── Card icon ──────────────────────────────────────────── */
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.35rem;
-      flex-shrink: 0;
-    }
+    .card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
+    .card--filo .card-icon { background: rgba(212,201,154,0.1); border: 1px solid rgba(212,201,154,0.2); }
+    .card--soc .card-icon { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.2); }
+    .card--arkhe .card-icon { background: rgba(166,124,82,0.1); border: 1px solid rgba(166,124,82,0.2); }
 
-    .card--filo .card-icon {
-      background: rgba(96,165,250,0.1);
-      border: 1px solid rgba(96,165,250,0.2);
-    }
+    .card-meta { display: flex; align-items: center; gap: 0.6rem; }
+    .card-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25em 0.7em; border-radius: 999px; }
+    .card--filo .card-tag { color: var(--accent-filo); background: rgba(212,201,154,0.1); }
+    .card--soc .card-tag { color: var(--accent-soc); background: rgba(192,57,43,0.1); }
+    .card--arkhe .card-tag { color: var(--accent-arkhe); background: rgba(166,124,82,0.1); }
 
-    .card--soc .card-icon {
-      background: rgba(251,191,36,0.1);
-      border: 1px solid rgba(251,191,36,0.2);
-    }
+    .card-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--text-primary); }
+    .card-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; font-weight: 300; }
 
-    /* ── Card body ──────────────────────────────────────────── */
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .card-tag {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.25em 0.7em;
-      border-radius: 999px;
-    }
-
-    .card--filo .card-tag {
-      color: var(--accent-filo);
-      background: rgba(96,165,250,0.1);
-    }
-
-    .card--soc .card-tag {
-      color: var(--accent-soc);
-      background: rgba(251,191,36,0.1);
-    }
-
-    .card-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.35rem, 3.2vw, 1.65rem);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .card-desc {
-      font-size: 0.925rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    .card-cta {
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      transition: gap var(--transition);
-    }
-
+    .card-cta { margin-top: auto; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; transition: gap var(--transition); }
     .card--filo .card-cta { color: var(--accent-filo); }
-    .card--soc  .card-cta { color: var(--accent-soc);  }
+    .card--soc .card-cta { color: var(--accent-soc); }
+    .card--arkhe .card-cta { color: var(--accent-arkhe); }
 
     .card:hover .card-cta { gap: 0.9rem; }
+    .card-cta svg { width: 14px; height: 14px; transition: transform var(--transition); }
+    .card:hover .card-cta svg { transform: translateX(3px); }
 
-    .card-cta svg {
-      width: 14px;
-      height: 14px;
-      transition: transform var(--transition);
-    }
-
-    .card:hover .card-cta svg {
-      transform: translateX(3px);
-    }
-
-    /* ── Footer ─────────────────────────────────────────────── */
-    footer {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      text-align: center;
-      padding: 1.75rem 0 2.5rem;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── Animations ─────────────────────────────────────────── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0);    }
-    }
-
-    /* ── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 540px) {
-      .cards { grid-template-columns: 1fr; }
-    }
+    footer { position: relative; z-index: 1; width: 100%; text-align: center; padding: 1.75rem 0 2.5rem; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.08em; border-top: 1px solid var(--border); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
 
   <main>
-
-    <!-- ── Header ── -->
     <header class="header">
       <span class="header-eyebrow">Portal de Experiencias</span>
       <h1><strong>Prof. Fabián</strong> Bautista G.</h1>
@@ -333,75 +201,52 @@
       <p>Experimenta tu aprendizaje</p>
     </header>
 
-    <!-- ── Cards ── -->
     <section class="cards" aria-label="Escape Rooms disponibles">
 
-      <!-- Tarjeta 1: Filosofía -->
-      <a
-        class="card card--filo"
-        href="https://fabianbauttt.github.io/escape-descartes/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Ir al Escape Room de Filosofía"
-      >
+      <a class="card card--filo" href="https://fabianbauttt.github.io/escape-descartes/" target="_blank">
         <div class="card-meta">
-          <div class="card-icon" aria-hidden="true">🧠</div>
+          <div class="card-icon">🧠</div>
           <span class="card-tag">Filosofía</span>
         </div>
-
-        <div>
-          <h2 class="card-title">El Laberinto del<br>Genio Maligno</h2>
-        </div>
-
-        <p class="card-desc">
-          Un desafío sobre la duda metódica de Descartes.<br>
-          ¿Puedes confiar en tus propios sentidos?
-        </p>
-
+        <h2 class="card-title">El Laberinto del<br>Genio Maligno</h2>
+        <p class="card-desc">Un desafío sobre la duda metódica de Descartes. ¿Puedes confiar en tus sentidos?</p>
         <div class="card-cta">
           Entrar al desafío
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4"/>
-          </svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </div>
       </a>
 
-      <!-- Tarjeta 2: Sociales -->
-      <a
-        class="card card--soc"
-        href="https://fabianbauttt.github.io/escape-guerra-fria/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Ir al Escape Room de Ciencias Sociales"
-      >
+      <a class="card card--arkhe" href="https://fabianbauttt.github.io/escape-arkhe/" target="_blank">
         <div class="card-meta">
-          <div class="card-icon" aria-hidden="true">📡</div>
+          <div class="card-icon">🏛️</div>
+          <span class="card-tag">Filosofía Antigua</span>
+        </div>
+        <h2 class="card-title">Arkhé:<br>En busca del origen</h2>
+        <p class="card-desc">Reconstruye el Templo de la Razón descifrando el enigma de los presocráticos.</p>
+        <div class="card-cta">
+          Explorar el origen
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+      </a>
+
+      <a class="card card--soc" href="https://fabianbauttt.github.io/escape-guerra-fria/" target="_blank">
+        <div class="card-meta">
+          <div class="card-icon">📡</div>
           <span class="card-tag">C. Sociales</span>
         </div>
-
-        <div>
-          <h2 class="card-title">Operación<br>Teléfono Rojo</h2>
-        </div>
-
-        <p class="card-desc">
-          Investigación táctica sobre la Guerra Fría.<br>
-          El mundo al borde del precipicio te necesita.
-        </p>
-
+        <h2 class="card-title">Operación<br>Teléfono Rojo</h2>
+        <p class="card-desc">Investigación táctica sobre la Guerra Fría. El mundo te necesita para evitar el caos.</p>
         <div class="card-cta">
-          Entrar al desafío
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4"/>
-          </svg>
+          Aceptar misión
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </div>
       </a>
 
     </section>
-
   </main>
 
   <footer>
-    <span>© 2026</span>
+    <span>© 2026 — Educación e Innovación</span>
   </footer>
 
 </body>
