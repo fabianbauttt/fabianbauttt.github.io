@@ -31,10 +31,15 @@
       --glow-soc:         rgba(192,57,43,0.14);
       --glow-soc-ring:    rgba(192,57,43,0.32);
 
-      /* Arkhé — Bronce Grecia (NUEVO) */
+      /* Arkhé — Bronce Grecia */
       --accent-arkhe:     #a67c52;
       --glow-arkhe:       rgba(166,124,82,0.18);
       --glow-arkhe-ring:  rgba(166,124,82,0.35);
+
+      /* Identidad — Neón Cyberpunk (NUEVO) */
+      --accent-cyber:     #00f0ff;
+      --glow-cyber:       rgba(0,240,255,0.18);
+      --glow-cyber-ring:  rgba(0,240,255,0.35);
 
       --radius:    14px;
       --transition: 0.38s cubic-bezier(0.22,1,0.36,1);
@@ -145,6 +150,7 @@
     .card:nth-child(1) { animation-delay: 0.12s; }
     .card:nth-child(2) { animation-delay: 0.22s; }
     .card:nth-child(3) { animation-delay: 0.32s; }
+    .card:nth-child(4) { animation-delay: 0.42s; }
 
     .card::before {
       content: '';
@@ -162,18 +168,21 @@
     .card--filo:hover { border-color: var(--glow-filo-ring); box-shadow: 0 0 0 1px var(--glow-filo-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-filo); transform: translateY(-5px); }
     .card--soc:hover { border-color: var(--glow-soc-ring); box-shadow: 0 0 0 1px var(--glow-soc-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-soc); transform: translateY(-5px); }
     .card--arkhe:hover { border-color: var(--glow-arkhe-ring); box-shadow: 0 0 0 1px var(--glow-arkhe-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-arkhe); transform: translateY(-5px); }
+    .card--cyber:hover { border-color: var(--glow-cyber-ring); box-shadow: 0 0 0 1px var(--glow-cyber-ring), 0 20px 60px -12px rgba(0,0,0,0.6), 0 0 40px -8px var(--glow-cyber); transform: translateY(-5px); }
 
     /* ── Card icon ──────────────────────────────────────────── */
     .card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
     .card--filo .card-icon { background: rgba(212,201,154,0.1); border: 1px solid rgba(212,201,154,0.2); }
     .card--soc .card-icon { background: rgba(192,57,43,0.1); border: 1px solid rgba(192,57,43,0.2); }
     .card--arkhe .card-icon { background: rgba(166,124,82,0.1); border: 1px solid rgba(166,124,82,0.2); }
+    .card--cyber .card-icon { background: rgba(0,240,255,0.1); border: 1px solid rgba(0,240,255,0.2); }
 
     .card-meta { display: flex; align-items: center; gap: 0.6rem; }
     .card-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25em 0.7em; border-radius: 999px; }
     .card--filo .card-tag { color: var(--accent-filo); background: rgba(212,201,154,0.1); }
     .card--soc .card-tag { color: var(--accent-soc); background: rgba(192,57,43,0.1); }
     .card--arkhe .card-tag { color: var(--accent-arkhe); background: rgba(166,124,82,0.1); }
+    .card--cyber .card-tag { color: var(--accent-cyber); background: rgba(0,240,255,0.1); }
 
     .card-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; color: var(--text-primary); }
     .card-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; font-weight: 300; }
@@ -182,6 +191,7 @@
     .card--filo .card-cta { color: var(--accent-filo); }
     .card--soc .card-cta { color: var(--accent-soc); }
     .card--arkhe .card-cta { color: var(--accent-arkhe); }
+    .card--cyber .card-cta { color: var(--accent-cyber); }
 
     .card:hover .card-cta { gap: 0.9rem; }
     .card-cta svg { width: 14px; height: 14px; transition: transform var(--transition); }
@@ -202,6 +212,19 @@
     </header>
 
     <section class="cards" aria-label="Escape Rooms disponibles">
+
+      <a class="card card--cyber" href="https://fabianbauttt.github.io/escape-identidad/" target="_blank">
+        <div class="card-meta">
+          <div class="card-icon">💾</div>
+          <span class="card-tag">Filosofía de la Mente</span>
+        </div>
+        <h2 class="card-title">Protocolo<br>Teseo</h2>
+        <p class="card-desc">Calibra tu esencia y cuestiona tus memorias. ¿Sigues siendo tú después de la transferencia?</p>
+        <div class="card-cta">
+          Iniciar Secuencia
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </div>
+      </a>
 
       <a class="card card--filo" href="https://fabianbauttt.github.io/escape-descartes/" target="_blank">
         <div class="card-meta">
