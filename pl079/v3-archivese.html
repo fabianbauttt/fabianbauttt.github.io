@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Archívese · PL 079</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Alfa+Slab+One&display=block" rel="stylesheet">
+<style>
+  /* VARIANTE 3 — "ARCHÍVESE"
+     El proyecto como expediente: una hoja mecanografiada que alguien formado en
+     lo público revisa y devuelve con un sello rojo. El NO es el sello. */
+  :root{
+    --kraft:#c9ab78; --sheet:#f6f2e7; --type:#1e1c19; --stamp:#d0291f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#888}
+  body{display:grid;place-items:center;min-height:100vh}
+  .poster{
+    position:relative;width:1080px;height:1350px;overflow:hidden;isolation:isolate;
+    background:var(--kraft);font-family:"Courier Prime",monospace;color:var(--type);
+  }
+  .poster::before{ /* fibras del cartón */
+    content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.02 .6' numOctaves='3' seed='3'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .12  0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .sheet{
+    position:absolute;left:40px;top:40px;right:40px;bottom:40px;background:var(--sheet);
+    box-shadow:0 1px 0 rgba(0,0,0,.08),0 14px 30px -12px rgba(60,40,10,.45);
+    padding:52px 60px;
+  }
+  .sheet::after{ /* grano del papel */
+    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.22;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .typed{filter:url(#typewriter)}
+
+  .head{
+    display:flex;justify-content:space-between;font-weight:700;font-size:25px;letter-spacing:.04em;
+    padding-bottom:14px;border-bottom:3px solid var(--type);
+  }
+  .title{margin-top:34px;font-weight:700;font-size:66px;line-height:1.08;letter-spacing:-.02em}
+
+  .fields{margin-top:30px;font-size:29px;line-height:1.42;width:430px}
+  .fields .k{font-weight:700;letter-spacing:.04em}
+  .fields .x{font-weight:700}
+
+  .rule{margin-top:104px;border-top:2px dashed var(--type)}
+  .obs-k{margin-top:24px;font-weight:700;font-size:25px;letter-spacing:.06em}
+  ol{list-style:none;margin-top:12px;font-size:29px;line-height:1.3;counter-reset:o}
+  ol li{display:grid;grid-template-columns:52px 1fr;margin-top:12px;counter-increment:o}
+  ol li::before{content:counter(o) ".";font-weight:700}
+
+  .decision{
+    position:absolute;left:60px;bottom:56px;font-size:29px;line-height:1.42;
+  }
+  .decision b{letter-spacing:.04em}
+
+  /* sellos */
+  .stamp{position:absolute;color:var(--stamp);mix-blend-mode:multiply;filter:url(#rubber);
+         font-family:"Alfa Slab One",serif;text-transform:uppercase;line-height:1}
+  .stamp-no{
+    left:522px;top:272px;transform:rotate(-8deg);
+    border:14px solid currentColor;outline:5px solid currentColor;outline-offset:9px;
+    padding:4px 28px 0;font-size:200px;letter-spacing:.02em;
+  }
+  .stamp-no small{
+    display:block;font-size:28px;letter-spacing:.32em;text-align:center;
+    border-top:6px solid currentColor;padding:10px 0 12px;margin:0 -28px;
+  }
+  .stamp-arch{
+    right:58px;bottom:70px;transform:rotate(5deg);
+    border:7px solid currentColor;border-radius:8px;padding:12px 22px 10px;
+    font-size:46px;letter-spacing:.06em;
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="rubber" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" seed="11" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -3.2 0 0 0 2.35" result="speck"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="4" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feComposite in="d" in2="speck" operator="in"/>
+  </filter>
+  <filter id="typewriter">
+    <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="2" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.6 0 0 0 1.75" result="speck"/>
+    <feComposite in="SourceGraphic" in2="speck" operator="in"/>
+  </filter>
+</svg>
+<div class="poster">
+  <div class="sheet">
+    <div class="typed">
+      <div class="head"><span>EXPEDIENTE: P.L. 079 DE 2026</span><span>FOLIO 1/1</span></div>
+
+      <h1 class="title">Me formó lo público.<br>Le debo este</h1>
+
+      <div class="fields">
+        <div class="k">FORMACIÓN:</div>
+        <div><span class="x">[X]</span> Colegio público</div>
+        <div><span class="x">[X]</span> Universidad pública</div>
+        <div class="k" style="margin-top:12px">ES DE:</div>
+        <div>Todos. Somos todos.</div>
+      </div>
+
+      <div class="rule"></div>
+      <div class="obs-k">OBSERVACIONES AL PROYECTO:</div>
+      <ol>
+        <li>Es regresivo e inconstitucional.</li>
+        <li>Amplía la privatización de los recursos de la educación pública.</li>
+        <li>Suprime el derecho a la gratuidad.</li>
+        <li>Amenaza el carácter universal, fundamental y laico de la educación.</li>
+        <li>Atenta contra la democracia escolar, la libertad de cátedra y el estatuto docente.</li>
+        <li>Favorece la corrupción.</li>
+      </ol>
+    </div>
+
+    <div class="decision typed">
+      <div><b>DECISIÓN:</b> que se archive.</div>
+      <div><b>ESTADO:</b>&nbsp;&nbsp; en alerta.</div>
+    </div>
+
+    <div class="stamp stamp-no">NO<small>Devuelto</small></div>
+    <div class="stamp stamp-arch">Archívese</div>
+  </div>
+</div>
+</body>
+</html>

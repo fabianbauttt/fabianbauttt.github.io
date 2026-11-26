@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>NOsotros · PL 079</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=block" rel="stylesheet">
+<style>
+  /* VARIANTE 2 — "NOSOTROS"
+     Impresión risográfica a dos tintas (rosa fluorescente + azul) con sobreimpresión,
+     desregistro y grano. El NO gigante se completa como NOSOTROS: la negativa
+     se vuelve identidad colectiva. */
+  :root{
+    --paper:#f2ebdd; --pink:#ff4fae; --blue:#2350a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#888}
+  body{display:grid;place-items:center;min-height:100vh}
+  .poster{
+    position:relative;width:1080px;height:1350px;overflow:hidden;isolation:isolate;
+    background:var(--paper);color:var(--blue);font-family:"Archivo",sans-serif;
+  }
+  .poster::after{ /* grano de papel */
+    content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.3;z-index:10;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .15  0 0 0 0 .1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .ink{filter:url(#riso);mix-blend-mode:multiply}
+  .pink{color:var(--pink)}
+  .ink-soft{mix-blend-mode:multiply}
+
+  .kicker{
+    position:absolute;left:64px;top:58px;right:64px;
+    font-weight:800;font-stretch:80%;font-size:52px;line-height:1.02;letter-spacing:-.01em;
+    display:flex;justify-content:space-between;align-items:flex-end;
+  }
+  .kicker small{font-size:24px;font-weight:700;font-stretch:100%;letter-spacing:.08em;text-transform:uppercase;text-align:right;line-height:1.3}
+
+  .big{
+    position:absolute;left:0;width:1080px;text-align:center;white-space:nowrap;
+    font-weight:900;text-transform:uppercase;line-height:1;
+  }
+  .no {top:104px;font-size:605px;font-stretch:100%;letter-spacing:-.03em;transform:translate(-5px,3px)}
+  .sotros{top:506px;font-size:300px;font-stretch:62%;letter-spacing:-.005em}
+
+  .tagline{
+    position:absolute;left:64px;right:64px;top:790px;
+    font-weight:800;font-stretch:72%;font-size:52px;line-height:1.02;letter-spacing:-.005em;
+  }
+
+  .why{
+    position:absolute;left:64px;right:64px;top:930px;
+    display:grid;grid-template-columns:1fr 1fr;column-gap:44px;row-gap:14px;
+    font-size:28px;line-height:1.2;font-weight:600;
+  }
+  .why span{text-wrap:balance}
+  .why p{display:grid;grid-template-columns:40px 1fr;padding-top:10px;border-top:3px solid var(--blue)}
+  .why b{font-weight:900}
+  .why-head{grid-column:1/-1;font-weight:800;font-size:28px;text-transform:uppercase;letter-spacing:.06em}
+
+  .foot{
+    position:absolute;left:0;right:0;bottom:0;height:100px;background:var(--pink);
+    display:flex;align-items:center;justify-content:space-between;padding:0 64px;
+    font-weight:900;font-stretch:72%;font-size:54px;text-transform:uppercase;letter-spacing:.005em;color:var(--blue);
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="riso" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -2.4 0 0 0 2.05" result="speck"/>
+    <feComposite in="SourceGraphic" in2="speck" operator="in"/>
+  </filter>
+</svg>
+<div class="poster">
+  <div class="kicker ink"><span>¿Quién defiende<br>la educación pública?</span><small>Proyecto de Ley<br>079 de 2026</small></div>
+
+  <div class="big no ink pink" aria-hidden="true">NO</div>
+  <div class="big sotros ink" aria-label="Nosotros">SOTROS</div>
+
+  <div class="tagline ink">Hijas e hijos de lo público.<br>Es de todos: somos todos.</div>
+
+  <div class="why ink-soft">
+    <p><b>1</b><span>Es regresivo e inconstitucional.</span></p>
+    <p><b>4</b><span>Amenaza una educación universal, fundamental y laica.</span></p>
+    <p><b>2</b><span>Amplía la privatización de los recursos educativos.</span></p>
+    <p><b>5</b><span>Atenta contra la democracia escolar, la libertad de cátedra y el estatuto docente.</span></p>
+    <p><b>3</b><span>Suprime el derecho a la gratuidad.</span></p>
+    <p><b>6</b><span>Favorece la corrupción.</span></p>
+  </div>
+
+  <div class="foot ink"><span>Que se archive</span><span>Estamos en alerta</span></div>
+</div>
+</body>
+</html>
