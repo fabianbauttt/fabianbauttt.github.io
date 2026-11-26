@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=block" rel="stylesheet">
 <style>
   /* VARIANTE 2 — "NOSOTROS"
-     Impresión risográfica a dos tintas (rosa fluorescente + azul) con sobreimpresión,
+     Impresión risográfica a dos tintas (rojo + azul) con sobreimpresión,
      desregistro y grano. El NO gigante se completa como NOSOTROS: la negativa
      se vuelve identidad colectiva. */
   :root{
-    --paper:#f2ebdd; --pink:#ff4fae; --blue:#2350a8;
+    --paper:#f2ebdd; --red:#e5332a; --blue:#2350a8;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#888}
@@ -27,7 +27,7 @@
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .15  0 0 0 0 .1  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
   .ink{filter:url(#riso);mix-blend-mode:multiply}
-  .pink{color:var(--pink)}
+  .red{color:var(--red)}
   .ink-soft{mix-blend-mode:multiply}
 
   .kicker{
@@ -60,9 +60,9 @@
   .why-head{grid-column:1/-1;font-weight:800;font-size:28px;text-transform:uppercase;letter-spacing:.06em}
 
   .foot{
-    position:absolute;left:0;right:0;bottom:0;height:100px;background:var(--pink);
+    position:absolute;left:0;right:0;bottom:0;height:100px;background:var(--red);
     display:flex;align-items:center;justify-content:space-between;padding:0 64px;
-    font-weight:900;font-stretch:72%;font-size:54px;text-transform:uppercase;letter-spacing:.005em;color:var(--blue);
+    font-weight:900;font-stretch:72%;font-size:54px;text-transform:uppercase;letter-spacing:.005em;color:var(--paper);
   }
 </style>
 </head>
@@ -77,7 +77,7 @@
 <div class="poster">
   <div class="kicker ink"><span>¿Quién defiende<br>la educación pública?</span><small>Proyecto de Ley<br>079 de 2026</small></div>
 
-  <div class="big no ink pink" aria-hidden="true">NO</div>
+  <div class="big no ink red" aria-hidden="true">NO</div>
   <div class="big sotros ink" aria-label="Nosotros">SOTROS</div>
 
   <div class="tagline ink">Hijas e hijos de lo público.<br>Es de todos: somos todos.</div>
@@ -91,7 +91,7 @@
     <p><b>6</b><span>Favorece la corrupción.</span></p>
   </div>
 
-  <div class="foot ink"><span>Que se archive</span><span>Estamos en alerta</span></div>
+  <div class="foot" style="filter:url(#riso)"><span>Que se archive</span><span>Estamos en alerta</span></div>
 </div>
 </body>
 </html>
